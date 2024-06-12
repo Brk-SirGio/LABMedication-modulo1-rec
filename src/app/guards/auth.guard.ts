@@ -6,11 +6,12 @@ import { LocalStorageService } from '../services/local-storage.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private localStorageService: LocalStorageService) {}
+
+  constructor(private localStorageService: LocalStorageService, private router: Router) {}
 
   canActivate(): boolean {
-    const loggedIn = this.localStorageService.getItem('loggedInUser');
-    if (loggedIn) {
+    const user = this.localStorageService.getItem('currentUser');
+    if (user) {
       return true;
     } else {
       this.router.navigate(['/login']);
