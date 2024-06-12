@@ -1,0 +1,111 @@
+<form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Nome Completo:</label>
+      <input formControlName="nomeCompleto" />
+      <div *ngIf="pacienteForm.get('nomeCompleto')?.invalid && pacienteForm.get('nomeCompleto')?.touched">
+        O nome deve ter entre 5 e 100 caracteres
+      </div>
+    </div>
+    <div>
+      <label>Gênero:</label>
+      <select formControlName="genero">
+        <option value="">Selecione</option>
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
+    <div>
+      <label>Data de Nascimento:</label>
+      <input type="date" formControlName="dataNascimento" />
+    </div>
+    <div>
+      <label>CPF:</label>
+      <input formControlName="cpf" placeholder="000.000.000-00" />
+      <div *ngIf="pacienteForm.get('cpf')?.invalid && pacienteForm.get('cpf')?.touched">
+        Formato de CPF inválido
+      </div>
+    </div>
+    <div>
+      <label>RG com Órgão Expedidor:</label>
+      <input formControlName="rg" />
+      <div *ngIf="pacienteForm.get('rg')?.invalid && pacienteForm.get('rg')?.touched">
+        Máximo de 20 caracteres
+      </div>
+    </div>
+    <div>
+      <label>Estado Civil:</label>
+      <select formControlName="estadoCivil">
+        <option value="">Selecione</option>
+        <option value="solteiro">Solteiro</option>
+        <option value="casado">Casado</option>
+        <option value="divorciado">Divorciado</option>
+        <option value="viuvo">Viúvo</option>
+      </select>
+    </div>
+    <div>
+      <label>Telefone:</label>
+      <input formControlName="telefone" placeholder="(99) 9 9999-9999" />
+      <div *ngIf="pacienteForm.get('telefone')?.invalid && pacienteForm.get('telefone')?.touched">
+        Formato de telefone inválido
+      </div>
+    </div>
+    <div>
+      <label>E-mail:</label>
+      <input type="email" formControlName="email" />
+    </div>
+    <div>
+      <label>Naturalidade:</label>
+      <input formControlName="naturalidade" />
+      <div *ngIf="pacienteForm.get('naturalidade')?.invalid && pacienteForm.get('naturalidade')?.touched">
+        A naturalidade deve ter entre 5 e 100 caracteres
+      </div>
+    </div>
+    <div>
+      <label>Contato de Emergência:</label>
+      <input formControlName="contatoEmergencia" placeholder="(99) 9 9999-9999" />
+      <div *ngIf="pacienteForm.get('contatoEmergencia')?.invalid && pacienteForm.get('contatoEmergencia')?.touched">
+        Formato de telefone inválido
+      </div>
+    </div>
+    <div>
+      <label>Lista de Alergias:</label>
+      <textarea formControlName="alergias"></textarea>
+    </div>
+    <div>
+      <label>Lista de Cuidados Específicos:</label>
+      <textarea formControlName="cuidadosEspecificos"></textarea>
+    </div>
+    <div>
+      <label>Convênio:</label>
+      <input formControlName="convenio" />
+    </div>
+    <div>
+      <label>Número do Convênio:</label>
+      <input formControlName="numeroConvenio" />
+    </div>
+    <div>
+      <label>Validade do Convênio:</label>
+      <input type="date" formControlName="validadeConvenio" />
+    </div>
+    <div formGroupName="endereco">
+      <label>CEP:</label>
+      <input formControlName="cep" (blur)="buscaCep()" />
+      <label>Cidade:</label>
+      <input formControlName="cidade" />
+      <label>Estado:</label>
+      <input formControlName="estado" />
+      <label>Logradouro:</label>
+      <input formControlName="logradouro" />
+      <label>Número:</label>
+      <input formControlName="numero" />
+      <label>Complemento:</label>
+      <input formControlName="complemento" />
+      <label>Bairro:</label>
+      <input formControlName="bairro" />
+      <label>Ponto de Referência:</label>
+      <input formControlName="pontoReferencia" />
+    </div>
+    <button type="submit" [disabled]="pacienteForm.invalid">Salvar</button>
+  </form>
+  
