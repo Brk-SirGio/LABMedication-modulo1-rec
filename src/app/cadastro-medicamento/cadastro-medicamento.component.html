@@ -1,1 +1,72 @@
-<p>cadastro-medicamento works!</p>
+<div class="container">
+  <h1>Cadastro de Medicamento</h1>
+  <div class="search-bar">
+    <input type="text" placeholder="Digite o nome do paciente" [(ngModel)]="searchTerm" (input)="onSearch()" />
+    <div class="search-results" *ngIf="searchResults.length">
+      <div *ngFor="let patient of searchResults" (click)="selectPatient(patient)" class="search-result">
+        {{ patient.nomeCompleto }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedPatient">
+    <h2>Medicamento de {{ selectedPatient.nomeCompleto }}</h2>
+
+    <div *ngIf="selectedPatient.medicamentos && selectedPatient.medicamentos.length">
+      <h3>Medicamentos Cadastrados</h3>
+      <ul>
+        <li *ngFor="let medicamento of selectedPatient.medicamentos">
+          {{ medicamento.nome }} - {{ medicamento.data }} - {{ medicamento.hora }}
+          <button (click)="editMedicamento(medicamento)">Editar</button>
+          <button (click)="deleteMedicamento(medicamento.id)">Excluir</button>
+        </li>
+      </ul>
+    </div>
+
+    <form [formGroup]="medicamentoForm" (ngSubmit)="onSubmit()">
+      <!-- Campos do formulário conforme enviado anteriormente -->
+      <div class="form-group">
+        <label for="nome">Nome do Medicamento</label>
+        <input id="nome" formControlName="nome" />
+      </div>
+
+      <div class="form-group">
+        <label for="data">Data</label>
+        <input id="data" formControlName="data" type="date" />
+      </div>
+
+      <div class="form-group">
+        <label for="hora">Hora</label>
+        <input id="hora" formControlName="hora" type="time" />
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" formControlName="tipo">
+          <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="quantidade">Quantidade</label>
+        <input id="quantidade" formControlName="quantidade" type="number" step="0.01" />
+      </div>
+
+      <div class="form-group">
+        <label for="unidade">Unidade</label>
+        <select id="unidade" formControlName="unidade">
+          <option *ngFor="let unidade of unidades" [value]="unidade">{{ unidade }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="observacoes">Observações</label>
+        <textarea id="observacoes" formControlName="observacoes"></textarea>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" [disabled]="medicamentoForm.invalid">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
