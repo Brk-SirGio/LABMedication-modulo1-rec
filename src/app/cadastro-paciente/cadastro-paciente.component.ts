@@ -48,7 +48,8 @@ export class CadastroPacienteComponent implements OnInit {
         complemento: [''],
         bairro: ['', Validators.required],
         pontoReferencia: ['']
-      })
+      }),
+      medicamentos: this.fb.array([])
     });
   }
 
@@ -56,9 +57,10 @@ export class CadastroPacienteComponent implements OnInit {
 
   onSubmit() {
     if (this.pacienteForm.valid) {
-      const paciente = this.pacienteForm.value;
-      paciente.id = this.generateId();
-      this.localStorageService.setItem(paciente.id, paciente);
+      const pacientes = JSON.parse(localStorage.getItem('pacientes') || '[]');
+      const paciente = { ...this.pacienteForm.value, id: this.generateId() };
+      pacientes.push(paciente);
+      localStorage.setItem('pacientes', JSON.stringify(pacientes));
       alert('Cadastro realizado com sucesso');
       this.router.navigate(['/inicio']);
     }
