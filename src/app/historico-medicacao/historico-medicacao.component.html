@@ -1,1 +1,18 @@
-<p>historico-medicacao works!</p>
+<div class="container">
+  <h1>Histórico de Medicação</h1>
+  <div class="search-bar">
+    <input type="text" placeholder="Digite o nome ou ID do paciente" [(ngModel)]="searchTerm" (input)="onSearch()" />
+    <div class="search-results" *ngIf="searchResults.length">
+    </div>
+  </div>
+
+  <div *ngIf="filteredMedications.length">
+    <h2>Registros de Medicação</h2>
+    <ul>
+      <li *ngFor="let record of filteredMedications" (click)="viewPatientDetails(record.pacienteId)">
+        <strong>{{ record.nome }}</strong> - {{ record.data }} - {{ record.hora }} (Paciente: {{ record.pacienteNome }})
+      </li>
+    </ul>
+  </div>
+  <p *ngIf="!filteredMedications.length && !searchTerm">Nenhum registro de medicação encontrado.</p>
+</div>
