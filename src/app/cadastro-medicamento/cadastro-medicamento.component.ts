@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
+import { TitleService } from '../services/title.service';
 
 @Component({
   selector: 'app-cadastro-medicamento',
   templateUrl: './cadastro-medicamento.component.html',
   styleUrls: ['./cadastro-medicamento.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ToolbarComponent],
 })
 export class CadastroMedicamentoComponent {
   searchTerm: string = '';
@@ -19,7 +21,7 @@ export class CadastroMedicamentoComponent {
   tipos = ['Cápsula', 'Comprimido', 'Líquido', 'Creme', 'Gel', 'Inalação', 'Injeção', 'Spray'];
   unidades = ['mg', 'mcg', 'g', 'mL', '%'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private titleService: TitleService) {
     this.medicamentoForm = this.fb.group({
       id: [''],
       nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
@@ -30,6 +32,10 @@ export class CadastroMedicamentoComponent {
       unidade: ['', Validators.required],
       observacoes: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
     });
+  }
+
+  ngOnInit() {
+    this.titleService.setTitle('Cadastro de medicamento');
   }
 
   onSearch() {

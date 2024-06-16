@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
+import { TitleService } from '../services/title.service';
 
 @Component({
   selector: 'app-historico-medicacao',
   templateUrl: './historico-medicacao.component.html',
   styleUrls: ['./historico-medicacao.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule] 
+  imports: [CommonModule, FormsModule, ToolbarComponent] 
 })
 export class HistoricoMedicacaoComponent implements OnInit {
   searchTerm: string = '';
@@ -16,10 +18,11 @@ export class HistoricoMedicacaoComponent implements OnInit {
   allMedications: any[] = [];
   filteredMedications: any[] = [];
 
-  constructor(private router: Router) {} 
+  constructor(private router: Router, private titleService: TitleService) {} 
 
   ngOnInit() {
     this.loadAllMedications();
+    this.titleService.setTitle('Histórico de medicações');
   }
 
   loadAllMedications() {

@@ -1,5 +1,13 @@
 <form (ngSubmit)="onSubmit()" #cadastroForm="ngForm">
     <label>
+      Nome:
+      <input type="usuario" [(ngModel)]="usuario" name="usuario" required string>
+      <div *ngIf="cadastroForm.controls['usuario']?.invalid && cadastroForm.controls['usuario']?.touched">
+        Nome inválido
+      </div>
+    </label>
+
+    <label>
       Email:
       <input type="email" [(ngModel)]="email" name="email" required email>
       <div *ngIf="cadastroForm.controls['email']?.invalid && cadastroForm.controls['email']?.touched">
