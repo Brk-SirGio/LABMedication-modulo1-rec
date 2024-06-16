@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
+import { TitleService } from '../services/title.service';
 
 @Component({
   selector: 'app-detalhes-paciente',
   templateUrl: './detalhes-paciente.component.html',
   styleUrls: ['./detalhes-paciente.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, ToolbarComponent]
 })
 export class DetalhesPacienteComponent implements OnInit {
   patientId: string | null = null;
@@ -20,9 +22,10 @@ export class DetalhesPacienteComponent implements OnInit {
     medicamentos: []
   };
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private titleService: TitleService) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Detalhamento Paciente');
     this.patientId = this.route.snapshot.paramMap.get('id');
     const pacientes = JSON.parse(localStorage.getItem('pacientes') || '[]');
     this.patient = pacientes.find((p: any) => p.id === this.patientId) || this.patient;

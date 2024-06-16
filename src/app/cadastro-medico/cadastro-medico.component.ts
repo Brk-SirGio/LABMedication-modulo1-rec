@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class CadastroMedicoComponent {
+  usuario: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -30,7 +31,7 @@ export class CadastroMedicoComponent {
       return;
     }
 
-    const user = { email: this.email, password: this.password };
+    const user = { usuario: this.usuario, email: this.email, password: this.password };
     this.localStorageService.setItem(this.email, user);
     alert('Cadastro realizado com sucesso');
     this.router.navigate(['/login']);
