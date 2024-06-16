@@ -1,2 +1,29 @@
 <app-toolbar></app-toolbar>
-<p>inicio works!</p>
+
+<div class="container">
+    <h1>Página de Início</h1>
+    <div class="statistics">
+      <div class="stat">
+        <h2>Total de Pacientes</h2>
+        <p>{{ totalPacientes }}</p>
+      </div>
+      <div class="stat">
+        <h2>Total de Medicamentos</h2>
+        <p>{{ totalMedicamentos }}</p>
+      </div>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar paciente por nome, telefone ou e-mail" [(ngModel)]="searchTerm" (input)="onSearch()" />
+    </div>
+    <div class="patient-cards">
+      <div *ngFor="let patient of filteredPatients" class="card" (click)="viewPatientDetails(patient)">
+        <h3>{{ patient.nomeCompleto }}</h3>
+        <p>Idade: {{ calculateAge(patient.dataNascimento) }}</p>
+        <p>Plano de Saúde: {{ patient.planoSaude }}</p>
+        <button (click)="viewPatientDetails(patient); $event.stopPropagation()">Ver Mais</button>
+      </div>
+    </div>
+    <p *ngIf="!filteredPatients.length">Nenhum paciente encontrado.</p>
+  </div>
+  
+  
