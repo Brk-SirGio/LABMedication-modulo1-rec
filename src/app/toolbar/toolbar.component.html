@@ -1,1 +1,9 @@
-<p>toolbar works!</p>
+<mat-toolbar color="primary" class="toolbar">
+    <span>{{ titleService.getTitle() }}</span>
+    <span class="spacer"></span>
+    <span class="user-info">
+      Dr(a). {{ userName }}
+      <img src="../assets/doutor icon.png" alt="Foto do Médico" class="user-photo">
+    </span>
+  </mat-toolbar>
+  

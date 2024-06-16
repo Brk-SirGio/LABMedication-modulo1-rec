@@ -6,13 +6,16 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
+import { TitleService } from '../services/title.service';
+
 
 @Component({
   selector: 'app-cadastro-paciente',
   standalone: true,
   styleUrl: './cadastro-paciente.component.scss',
   templateUrl: './cadastro-paciente.component.html',
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule]
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, ToolbarComponent]
 })
 export class CadastroPacienteComponent implements OnInit {
   pacienteForm: FormGroup;
@@ -21,7 +24,8 @@ export class CadastroPacienteComponent implements OnInit {
     private fb: FormBuilder,
     private localStorageService: LocalStorageService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private titleService: TitleService
   ) {
     this.pacienteForm = this.fb.group({
       nomeCompleto: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
@@ -53,7 +57,9 @@ export class CadastroPacienteComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.titleService.setTitle('Cadastro de paciente');
+  }
 
   onSubmit() {
     if (this.pacienteForm.valid) {
