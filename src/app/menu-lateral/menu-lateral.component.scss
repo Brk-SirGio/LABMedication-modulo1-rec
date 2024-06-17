@@ -1,0 +1,60 @@
+@import "primeicons/primeicons.css";
+
+$main-color: #0fa3b1;
+
+.sidenav-container {
+  display: flex;
+  height: calc(100vh - 60px); /* Altura ajustada considerando a altura da toolbar */
+  background-color: transparent;
+  position: fixed;
+
+}
+
+mat-sidenav {
+  width: 17rem; /* Largura do menu lateral */
+  background-color: $main-color;
+  display: flex;
+  flex-direction: column; /* Para garantir que os botões fiquem empilhados verticalmente */
+  padding-top: 3.3rem; /* Espaçamento superior opcional */
+}
+
+mat-sidenav button {
+  width: 100%; /* Botões ocupam a largura total do contêiner */
+  text-align: center; /* Alinhar texto à esquerda */
+  padding: 1rem; /* Ajustar o preenchimento dos botões */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem; /* Ajustar o tamanho da fonte dos botões */
+  display: block; /* Garante que os botões sejam elementos de bloco */
+}
+
+mat-sidenav button:hover {
+  background-color: #06585f; /* Adicionar efeito de hover */
+}
+
+mat-sidenav-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.div-botao-menu {
+  margin-top: 0;
+  position: fixed;
+  z-index: 9999;
+  border: none;
+  outline: none;
+  background-color: $main-color;
+  color: black;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0px;
+}
+
+#botao-sair:hover{
+  color: red;
+  background-color: rgba(247, 231, 231, 0.801);
+}

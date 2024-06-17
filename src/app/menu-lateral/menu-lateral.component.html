@@ -1,0 +1,18 @@
+<div class="div-botao-menu">
+  <button class="pi pi-bars" mat-button (click)="sidenav.toggle()">Menu</button>
+</div>
+<mat-sidenav-container class="sidenav-container">
+  
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    
+    <button mat-button routerLink="/inicio">Início</button>
+    <button mat-button routerLink="/cadastro-paciente">Cadastrar Paciente</button>
+    <button mat-button routerLink="/cadastro-medicamento">Cadastrar Medicação</button>
+    <button mat-button routerLink="/historico-medicacao">Histórico de Medicações</button>
+    <button mat-button routerLink="/sair" id="botao-sair">Sair</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+   
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

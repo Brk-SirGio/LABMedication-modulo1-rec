@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TitleService } from '../services/title.service';
+import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 
 @Component({
   selector: 'app-cadastro-medicamento',
   templateUrl: './cadastro-medicamento.component.html',
   styleUrls: ['./cadastro-medicamento.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ToolbarComponent],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ToolbarComponent, MenuLateralComponent],
 })
 export class CadastroMedicamentoComponent {
   searchTerm: string = '';
