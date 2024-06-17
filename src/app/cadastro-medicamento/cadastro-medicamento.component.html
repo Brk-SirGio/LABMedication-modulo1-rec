@@ -1,4 +1,5 @@
 <app-toolbar></app-toolbar>
+<app-menu-lateral></app-menu-lateral>
 
 <div class="container">
   <h1>Cadastro de Medicamento</h1>
@@ -14,16 +15,7 @@
   <div *ngIf="selectedPatient">
     <h2>Medicamento de {{ selectedPatient.nomeCompleto }}</h2>
 
-    <div *ngIf="selectedPatient.medicamentos && selectedPatient.medicamentos.length">
-      <h3>Medicamentos Cadastrados</h3>
-      <ul>
-        <li *ngFor="let medicamento of selectedPatient.medicamentos">
-          {{ medicamento.nome }} - {{ medicamento.data }} - {{ medicamento.hora }}
-          <button (click)="editMedicamento(medicamento)">Editar</button>
-          <button (click)="deleteMedicamento(medicamento.id)">Excluir</button>
-        </li>
-      </ul>
-    </div>
+    
 
     <form [formGroup]="medicamentoForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -69,5 +61,19 @@
         <button type="submit" [disabled]="medicamentoForm.invalid">Salvar</button>
       </div>
     </form>
+    <div *ngIf="selectedPatient.medicamentos && selectedPatient.medicamentos.length">
+      <h3>Medicamentos Cadastrados:</h3>
+      <ul>
+        <li *ngFor="let medicamento of selectedPatient.medicamentos" class="medicamentos-cadastrados">
+          <p>{{ medicamento.nome }}</p>
+          <p>{{ medicamento.data | date:'dd/MM/yyyy' }}</p>
+          <p>{{ medicamento.hora }}</p>
+          <button (click)="editMedicamento(medicamento)">Editar</button>
+          <button (click)="deleteMedicamento(medicamento.id)">Excluir</button>
+        </li>
+      </ul>
+    </div>
+
   </div>
+  
 </div>

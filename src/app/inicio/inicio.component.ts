@@ -4,11 +4,18 @@ import { TitleService } from '../services/title.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [ToolbarComponent, CommonModule, ReactiveFormsModule, FormsModule,],
+  imports: [
+          ToolbarComponent,
+          CommonModule, 
+          ReactiveFormsModule, 
+          FormsModule, 
+          MenuLateralComponent, 
+          ],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.scss'
 })

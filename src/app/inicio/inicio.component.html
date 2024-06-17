@@ -1,14 +1,16 @@
 <app-toolbar></app-toolbar>
+<app-menu-lateral></app-menu-lateral>
 
-<div class="container">
-    <h1>Página de Início</h1>
+<div class="main-container">
+  <div class="container">
+    <h1>Seja, bem-vindo(a)!</h1>
     <div class="statistics">
       <div class="stat">
-        <h2>Total de Pacientes</h2>
+        <h2>Total de Pacientes🤕</h2>
         <p>{{ totalPacientes }}</p>
       </div>
       <div class="stat">
-        <h2>Total de Medicamentos</h2>
+        <h2>Total de Medicamentos💊</h2>
         <p>{{ totalMedicamentos }}</p>
       </div>
     </div>
@@ -17,13 +19,13 @@
     </div>
     <div class="patient-cards">
       <div *ngFor="let patient of filteredPatients" class="card" (click)="viewPatientDetails(patient)">
+        <img src="../assets/patient icon.png" alt="imagem do paciente">
         <h3>{{ patient.nomeCompleto }}</h3>
         <p>Idade: {{ calculateAge(patient.dataNascimento) }}</p>
-        <p>Plano de Saúde: {{ patient.planoSaude }}</p>
+        <p>Plano: {{ patient.convenio }}</p>
         <button (click)="viewPatientDetails(patient); $event.stopPropagation()">Ver Mais</button>
       </div>
     </div>
     <p *ngIf="!filteredPatients.length">Nenhum paciente encontrado.</p>
   </div>
-  
-  
+</div>
