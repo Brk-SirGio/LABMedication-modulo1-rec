@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TitleService } from '../services/title.service';
+import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { TitleService } from '../services/title.service';
   standalone: true,
   styleUrl: './cadastro-paciente.component.scss',
   templateUrl: './cadastro-paciente.component.html',
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, ToolbarComponent]
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, ToolbarComponent, MenuLateralComponent]
 })
 export class CadastroPacienteComponent implements OnInit {
   pacienteForm: FormGroup;

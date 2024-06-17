@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TitleService } from '../services/title.service';
+import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 
 @Component({
   selector: 'app-historico-medicacao',
   templateUrl: './historico-medicacao.component.html',
   styleUrls: ['./historico-medicacao.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ToolbarComponent] 
+  imports: [CommonModule, FormsModule, ToolbarComponent, MenuLateralComponent] 
 })
 export class HistoricoMedicacaoComponent implements OnInit {
   searchTerm: string = '';

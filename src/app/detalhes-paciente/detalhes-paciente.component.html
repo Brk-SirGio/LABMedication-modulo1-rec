@@ -1,18 +1,24 @@
 <app-toolbar></app-toolbar>
+<app-menu-lateral></app-menu-lateral>
 
 <div class="container">
   <h1>Detalhes do Paciente</h1>
+  <img src="../assets/patient icon.png" alt="imagem do paciente">
   <div *ngIf="patient">
     <h2>{{ patient.nomeCompleto }}</h2>
+    <div class="infos-paciente">
     <p>Convênio: {{ patient.convenio }}</p>
     <p>Contato de Emergência: {{ patient.contatoEmergencia }}</p>
     <p>Alergias: {{ patient.alergias }}</p>
     <p>Cuidados Específicos: {{ patient.cuidadosEspecificos }}</p>
+    </div>
 
     <h3>Histórico de Medicação</h3>
     <ul *ngIf="patient.medicamentos && patient.medicamentos.length > 0">
-      <li *ngFor="let medicamento of patient.medicamentos">
-        <strong>{{ medicamento.nome }}</strong> - {{ medicamento.data }} - {{ medicamento.hora }}
+      <li *ngFor="let medicamento of patient.medicamentos" class="lista-historico-medicacao">
+        <p><strong>{{ medicamento.nome }}</strong></p>
+        <p>Dia: {{ medicamento.data | date:'dd/MM/yyyy' }} </p>
+        <p>Horário: {{ medicamento.hora }}</p>
         <button (click)="editMedicamento(medicamento)">Editar</button>
         <button (click)="deleteMedicamento(medicamento.id)">Excluir</button>
       </li>

@@ -3,13 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TitleService } from '../services/title.service';
+import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 
 @Component({
   selector: 'app-detalhes-paciente',
   templateUrl: './detalhes-paciente.component.html',
   styleUrls: ['./detalhes-paciente.component.scss'],
   standalone: true,
-  imports: [CommonModule, ToolbarComponent]
+  imports: [CommonModule, ToolbarComponent, MenuLateralComponent]
 })
 export class DetalhesPacienteComponent implements OnInit {
   patientId: string | null = null;
