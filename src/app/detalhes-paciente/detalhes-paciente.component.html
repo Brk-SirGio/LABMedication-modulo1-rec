@@ -5,14 +5,18 @@
   <h1>Detalhes do Paciente</h1>
   <img src="../assets/patient icon.png" alt="imagem do paciente">
   <div *ngIf="patient">
-    <h2>{{ patient.nomeCompleto }}</h2>
-    <div class="infos-paciente">
-    <p>Convênio: {{ patient.convenio }}</p>
-    <p>Contato de Emergência: {{ patient.contatoEmergencia }}</p>
-    <p>Alergias: {{ patient.alergias }}</p>
-    <p>Cuidados Específicos: {{ patient.cuidadosEspecificos }}</p>
+    <div id="paciente-editar-deletar">
+      <h2>{{ patient.nomeCompleto }}</h2>
+      <button (click)="openEditModal()"><mat-icon aria-hidden="false" aria-label="edit icon" fontIcon="edit"></mat-icon></button>
+      <button (click)="deletePaciente()"><mat-icon aria-hidden="false" aria-label="delete icon" fontIcon="delete"></mat-icon></button>
     </div>
-
+    
+    <div class="infos-paciente">
+      <p>Convênio: {{ patient.convenio }}</p>
+      <p>Contato de Emergência: {{ patient.contatoEmergencia }}</p>
+      <p>Alergias: {{ patient.alergias }}</p>
+      <p>Cuidados Específicos: {{ patient.cuidadosEspecificos }}</p>
+    </div>
     <h3>Histórico de Medicação</h3>
     <ul *ngIf="patient.medicamentos && patient.medicamentos.length > 0">
       <li *ngFor="let medicamento of patient.medicamentos" class="lista-historico-medicacao">
@@ -24,5 +28,8 @@
       </li>
     </ul>
     <p *ngIf="!patient.medicamentos || patient.medicamentos.length === 0">Nenhuma medicação registrada.</p>
+    
   </div>
 </div>
+
+<app-modal-editar-paciente *ngIf="showEditModal" [patient]="patient"></app-modal-editar-paciente>

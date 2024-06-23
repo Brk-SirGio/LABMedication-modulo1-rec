@@ -4,34 +4,34 @@ $main-color: #0fa3b1;
 
 .sidenav-container {
   display: flex;
-  height: calc(100vh - 60px); /* Altura ajustada considerando a altura da toolbar */
+  height: calc(100vh - 60px);
   background-color: transparent;
   position: fixed;
 
 }
 
 mat-sidenav {
-  width: 17rem; /* Largura do menu lateral */
+  width: 17rem;
   background-color: $main-color;
   display: flex;
-  flex-direction: column; /* Para garantir que os botões fiquem empilhados verticalmente */
-  padding-top: 3.3rem; /* Espaçamento superior opcional */
+  flex-direction: column;
+  padding-top: 3.3rem;
 }
 
 mat-sidenav button {
-  width: 100%; /* Botões ocupam a largura total do contêiner */
-  text-align: center; /* Alinhar texto à esquerda */
-  padding: 1rem; /* Ajustar o preenchimento dos botões */
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
   border: none;
   background: none;
   cursor: pointer;
   color: white;
-  font-size: 1rem; /* Ajustar o tamanho da fonte dos botões */
-  display: block; /* Garante que os botões sejam elementos de bloco */
+  font-size: 1rem;
+  display: block;
 }
 
 mat-sidenav button:hover {
-  background-color: #06585f; /* Adicionar efeito de hover */
+  background-color: #06585f;
 }
 
 mat-sidenav-content {

@@ -11,33 +11,31 @@ $main-color: #0fa3b1;
   right: 0;
   z-index: 1000;
 
-  /* Estilos para todos os tamanhos de tela */
   display: flex;
   align-items: center;
   padding: 16px;
   background-color: $main-color;
 
-  /* Estilos para mobile (até 480px) */
   @media (max-width: #{$mobile - 1px}) {
     .user-info{ display: none;}
     .user-photo{ display: none;}
-    flex-direction: column; /* Organizar em coluna */
+    flex-direction: column;
     padding: 8px;
   }
 
-  /* Estilos para tablet (481px a 720px) */
+ 
   @media (min-width: #{$mobile}) and (max-width: #{$tablet - 1px}) {
-    font-size: 16px; /* Ajustar tamanho da fonte */
+    font-size: 16px;
   }
 
-  /* Estilos para desktop (acima de 720px) */
+  
   @media (min-width: #{$tablet}) {
-    padding: 24px; /* Aumentar padding em desktop */
+    padding: 24px;
   }
 }
 
 .spacer {
-  flex: 1 1 auto; /* Ocupar espaço disponível */
+  flex: 1 1 auto;
 }
 
 .user-info {
