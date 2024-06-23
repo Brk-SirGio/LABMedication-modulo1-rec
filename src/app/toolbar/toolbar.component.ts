@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { TitleService } from '../services/title.service';
 
 @Component({

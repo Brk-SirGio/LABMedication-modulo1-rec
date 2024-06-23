@@ -1,3 +1,28 @@
+#paciente-editar-deletar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#paciente-editar-deletar button {
+  height:30px;
+  width:30px;
+   cursor:pointer;
+   background-color: transparent;
+   border: transparent;
+
+   & :hover{
+    color: red;
+    font-size: 200%;
+   }
+}
+
+#paciente-editar-deletar h2 {
+  padding-top: 30px;
+}
+
+
+
 .container {
     margin-left: 18rem;
     display: flex;
